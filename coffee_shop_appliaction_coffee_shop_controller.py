@@ -9,3 +9,6 @@ class Coffee_Shop_Controller():
 
     def query_manipulate(self,sql,data):
         query(self.database,sql,data)
+
+    def query_search(self):
+        pass

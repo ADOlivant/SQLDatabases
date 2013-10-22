@@ -1,21 +1,21 @@
 import sqlite3
 
-def select_all_products():
-	with sqlite3.connect("coffee_shop.db") as db: 
+def select_all_products(db_name):
+	with sqlite3.connect(db_name) as db: 
 		cursor = db.cursor()
-		cursor.execute("select * from Product")
+		cursor.execute("""SELECT * FROM Product""")
 		products = cursor.fetchall()
 		return products
 
-def select_product(id):
-	with sqlite3.connect("coffee_shop.db") as db:
+def select_product(db_name,id):
+	with sqlite3.connect(db_name) as db:
 		cursor = db.cursor()
-		cursor.execute("select Name,Price from Product where ProductID=?", (id,))
+		cursor.execute("""SELECT Name,Price FROM Product WHERE ProductID=?""", (id,))
 		product = cursor.fetchone()
 		return product
 
-def search_product(product):
-        with sqlite3.connect("coffee_shop.db") as db:
+def search_product(db_name,product):
+        with sqlite3.connect(db_name) as db:
                 cursor = db.cursor()
                 cursor.execute("""SELECT * FROM Product WHERE Name=?""",(product,))
                 results = cursor.fetchall()

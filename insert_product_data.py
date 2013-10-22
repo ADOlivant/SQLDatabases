@@ -1,9 +1,9 @@
 import sqlite3
 
-def insert_data(values):
-    with sqlite3.connect("coffee_shop.db") as db:
+def insert_data(db_name,values):
+    with sqlite3.connect(db_name) as db:
         cursor = db.cursor()
-        sql = "insert into Product (Name, Price) values (?,?)"
+        sql = """INSERT INTO Product (Name, Price) VALUES (?,?)"""
         cursor.execute(sql,values)
         db.commit()
 

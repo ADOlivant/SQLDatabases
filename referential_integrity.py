@@ -1,9 +1,9 @@
 import sqlite3
 
-def query(sql,data):
-    with sqlite3.connect("coffee_shop_v4.db") as db:
+def query(db_name,sql,data):
+    with sqlite3.connect(db_name) as db:
         cursor = db.cursor()
-        cursor.execute("PRAGMA foreign_keys = ON")
+        cursor.execute("""PRAGMA foreign_keys = ON""")
         cursor.execute(sql,data)
         db.commit()
 

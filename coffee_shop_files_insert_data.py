@@ -16,6 +16,13 @@ def insert_product_data(records):
     sql = """INSERT INTO Product (Name,Price,ProductTypeID) VALUES (?,?,?)"""
     for record in records:
         query(sql,record)
+		
+def insert_customer_data(records):
+	sql = """INSERT INTO Customer (FirstName,LastName,Street,Town,Postcode,TelephoneNumber,EMailAddress)
+			 VALUES (?,?,?,?,?,?,?)"""
+	for record in records: 
+		query(sql,record)
+
 
 if __name__ == "__main__":
     product_types = [("Coffe",),("Tea",),("Cold Drink",)]

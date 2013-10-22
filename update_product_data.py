@@ -1,9 +1,9 @@
 import sqlite3
 
-def update_product(data): 
-	with sqlite3.connect("coffee_shop.db") as db: 
+def update_product(db_name,data): 
+	with sqlite3.connect(db_name) as db: 
 		cursor = db.cursor()
-		sql = "update Product set Name=?, Price=? where ProductID=?"
+		sql = """UPDATE Product SET Name=?, Price=? WHERE ProductID=?"""
 		cursor.execute(sql,data)
 		db.commit()
 
